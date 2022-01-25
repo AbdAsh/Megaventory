@@ -4,6 +4,7 @@ import Discounts from "../views/Discounts.vue";
 import Home from "../views/Home.vue";
 import InventoryLocations from "../views/InventoryLocations.vue";
 import Products from "../views/Products.vue";
+import Taxes from "../views/Taxes.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/inventories",
     name: "Inventories",
     component: InventoryLocations,
+  },
+  {
+    path: "/taxes",
+    name: "Taxes",
+    component: Taxes,
   },
 ];
 
