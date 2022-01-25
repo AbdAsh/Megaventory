@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <InsertProduct />
   </div>
 </template>
 
 <script>
+import InsertProduct from "@/components/InsertProduct.vue";
 export default {
   name: "Home",
+  components: {
+    InsertProduct,
+  },
 };
 </script>

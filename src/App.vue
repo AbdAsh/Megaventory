@@ -1,8 +1,23 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div> -->
+  <nav
+    class="navbar"
+    style="display: flex; flex-direction: column; align-items: center"
+  >
+    <div class="navbar-brand">
+      <router-link to="/">
+        <img
+          alt="Mega logo"
+          src="https://www.reviewrumble.com/wp-content/uploads/2019/10/megaventory-logo.png"
+        />
+      </router-link>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <router-link class="navbar-item" to="/">Home</router-link>
+        <router-link class="navbar-item" to="/">Insert Product</router-link>
+      </div>
+    </div>
+  </nav>
   <router-view />
 </template>
 
