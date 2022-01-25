@@ -4,8 +4,15 @@
     <div v-else>
       <div class="tile is-justify-content-space-between">
         <label class="title"> Taxes </label>
-        <button class="button">Add Tax</button>
+        <button
+          @click.prevent="formOpen = !formOpen"
+          class="button"
+          :class="formOpen ? 'is-danger' : 'is-success'"
+        >
+          Add Tax
+        </button>
       </div>
+      <InsertTax v-if="formOpen" />
       <div class="columns">
         <label class="column"> Name </label>
         <label class="column"> Description </label>
@@ -22,10 +29,11 @@
 
 <script>
 import axios from "axios";
+import InsertTax from "@/components/InsertTax.vue";
 export default {
   name: "Taxes",
   data() {
-    return { taxes: [], loading: false };
+    return { taxes: [], loading: false, formOpen: false };
   },
   created() {
     this.getTaxes();
@@ -44,6 +52,7 @@ export default {
         });
     },
   },
+  components: { InsertTax },
 };
 </script>
 

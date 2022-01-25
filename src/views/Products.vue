@@ -4,8 +4,15 @@
     <div v-else>
       <div class="tile is-justify-content-space-between">
         <label class="title"> Products </label>
-        <button class="button">Add Product</button>
+        <button
+          @click.prevent="formOpen = !formOpen"
+          class="button"
+          :class="formOpen ? 'is-danger' : 'is-success'"
+        >
+          Insert Product
+        </button>
       </div>
+      <InsertProduct v-if="formOpen" />
       <div class="columns">
         <label class="column is-one-fifth"> ID </label>
         <label class="column is-one-fifth"> SKU </label>
@@ -22,10 +29,11 @@
 
 <script>
 import axios from "axios";
+import InsertProduct from "@/components/InsertProduct.vue";
 export default {
   name: "Products",
   data() {
-    return { products: [], loading: false };
+    return { products: [], loading: false, formOpen: false };
   },
   created() {
     this.getProducts();
@@ -44,6 +52,7 @@ export default {
         });
     },
   },
+  components: { InsertProduct },
 };
 </script>
 

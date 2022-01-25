@@ -4,8 +4,15 @@
     <div v-else>
       <div class="tile is-justify-content-space-between">
         <label class="title"> Inventory Locations </label>
-        <button class="button">Add Inventory Location</button>
+        <button
+          @click.prevent="formOpen = !formOpen"
+          class="button"
+          :class="formOpen ? 'is-danger' : 'is-success'"
+        >
+          Add Inventory Location
+        </button>
       </div>
+      <InsertInventoryLocation v-if="formOpen" />
       <div class="columns">
         <label class="column is-one-fifth"> Abbreviation </label>
         <label class="column"> Name </label>
@@ -24,10 +31,11 @@
 
 <script>
 import axios from "axios";
+import InsertInventoryLocation from "@/components/InsertInventoryLocation.vue";
 export default {
   name: "Inventories",
   data() {
-    return { inventories: [], loading: false };
+    return { inventories: [], loading: false, formOpen: false };
   },
   created() {
     this.getInventories();
@@ -48,6 +56,7 @@ export default {
         });
     },
   },
+  components: { InsertInventoryLocation },
 };
 </script>
 
