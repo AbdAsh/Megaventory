@@ -140,6 +140,34 @@ export default createStore({
           });
       });
     },
+    insertDiscount({ commit }, payload) {
+      new Promise((resolve, reject) => {
+        axios
+          .post(`Discount/DiscountUpdate?APIKEY=${APIKEY}`, {
+            mvDiscount: payload,
+          })
+          .then((res) => {
+            res.data.ResponseStatus.ErrorCode == 0
+              ? (resolve(res),
+                commit("showToast", {
+                  type: "success",
+                  payload: "Discount Added",
+                }))
+              : (reject(res),
+                commit("showToast", {
+                  type: "error",
+                  payload: res.data.ResponseStatus.Message,
+                }));
+          })
+          .catch((err) => {
+            commit("showToast", {
+              type: "error",
+              payload: "An error occured",
+            });
+            reject(err);
+          });
+      });
+    },
   },
   modules: {},
 });

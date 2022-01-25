@@ -3,7 +3,8 @@
     <!-- <InsertProduct /> -->
     <!-- <InsertClient /> -->
     <!-- <InsertInventoryLocation /> -->
-    <InsertTax />
+    <!-- <InsertTax /> -->
+    <InsertDiscount />
   </div>
 </template>
 
@@ -11,14 +12,16 @@
 // import InsertProduct from "@/components/InsertProduct.vue";
 // import InsertClient from "@/components/InsertClient.vue";
 // import InsertInventoryLocation from "@/components/InsertInventoryLocation.vue";
-import InsertTax from "../components/InsertTax.vue";
+// import InsertTax from "@/components/InsertTax.vue";
+import InsertDiscount from "@/components/InsertDiscount.vue";
 export default {
   name: "Home",
   components: {
     // InsertProduct,
     // InsertClient,
     // InsertInventoryLocation,
-    InsertTax,
+    // InsertTax,
+    InsertDiscount,
   },
 };
 </script>
