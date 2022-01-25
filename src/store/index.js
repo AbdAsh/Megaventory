@@ -15,10 +15,10 @@ const Toast = Swal.mixin({
   },
 });
 
-const APIKEY = "9a251a681b536899@m128049";
-// const APIKEY = "9a251a681b536899";
 export default createStore({
-  state: {},
+  state: {
+    APIKEY: "9a251a681b536899@m128049",
+  },
   mutations: {
     showToast(state, { type, payload }) {
       Toast.fire({
@@ -28,10 +28,10 @@ export default createStore({
     },
   },
   actions: {
-    insert({ commit }, { url, payload, callback }) {
+    insert({ commit, state }, { url, payload, callback }) {
       new Promise((resolve, reject) => {
         axios
-          .post(`${url}?APIKEY=${APIKEY}`, payload)
+          .post(`${url}?APIKEY=${state.APIKEY}`, payload)
           .then((res) => {
             res.data.ResponseStatus.ErrorCode == 0
               ? (resolve(res),
