@@ -1,7 +1,7 @@
 <template>
   <div class="container box">
     <div class="title">Insert Inventory Location</div>
-    <form @submit.prevent="addClient">
+    <form @submit.prevent="addInventory">
       <div class="field">
         <label class="label has-text-left">Abbreviation</label>
         <input
@@ -60,7 +60,7 @@ export default {
     },
   },
   methods: {
-    addClient() {
+    addInventory() {
       this.loading = true;
       this.$store
         .dispatch("insertInventoryLocation", this.inventory)
