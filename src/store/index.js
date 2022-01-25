@@ -28,18 +28,16 @@ export default createStore({
     },
   },
   actions: {
-    insertProduct({ commit }, payload) {
+    insert({ commit }, { url, payload, callback }) {
       new Promise((resolve, reject) => {
         axios
-          .post(`Product/ProductUpdate?APIKEY=${APIKEY}`, {
-            mvProduct: payload,
-          })
+          .post(`${url}?APIKEY=${APIKEY}`, payload)
           .then((res) => {
             res.data.ResponseStatus.ErrorCode == 0
               ? (resolve(res),
                 commit("showToast", {
                   type: "success",
-                  payload: "Product Added",
+                  payload: callback,
                 }))
               : (reject(res),
                 commit("showToast", {
@@ -56,116 +54,39 @@ export default createStore({
           });
       });
     },
-    insertSupplierClient({ commit }, payload) {
-      new Promise((resolve, reject) => {
-        axios
-          .post(`SupplierClient/SupplierClientUpdate?APIKEY=${APIKEY}`, {
-            mvSupplierClient: payload,
-          })
-          .then((res) => {
-            res.data.ResponseStatus.ErrorCode == 0
-              ? (resolve(res),
-                commit("showToast", {
-                  type: "success",
-                  payload: "Supplier Client Added",
-                }))
-              : (reject(res),
-                commit("showToast", {
-                  type: "error",
-                  payload: res.data.ResponseStatus.Message,
-                }));
-          })
-          .catch((err) => {
-            commit("showToast", {
-              type: "error",
-              payload: "An error occured",
-            });
-            reject(err);
-          });
+    insertProduct({ dispatch }, payload) {
+      dispatch("insert", {
+        url: "Product/ProductUpdate",
+        payload: { mvProduct: payload },
+        callback: "Product inserted",
       });
     },
-    insertInventoryLocation({ commit }, payload) {
-      new Promise((resolve, reject) => {
-        axios
-          .post(`InventoryLocation/InventoryLocationUpdate?APIKEY=${APIKEY}`, {
-            mvInventoryLocation: payload,
-          })
-          .then((res) => {
-            res.data.ResponseStatus.ErrorCode == 0
-              ? (resolve(res),
-                commit("showToast", {
-                  type: "success",
-                  payload: "Inventory Location Added",
-                }))
-              : (reject(res),
-                commit("showToast", {
-                  type: "error",
-                  payload: res.data.ResponseStatus.Message,
-                }));
-          })
-          .catch((err) => {
-            commit("showToast", {
-              type: "error",
-              payload: "An error occured",
-            });
-            reject(err);
-          });
+    insertSupplierClient({ dispatch }, payload) {
+      dispatch("insert", {
+        url: "SupplierClient/SupplierClientUpdate",
+        payload: { mvSupplierClient: payload },
+        callback: "Supplier Client Added",
       });
     },
-    insertTax({ commit }, payload) {
-      new Promise((resolve, reject) => {
-        axios
-          .post(`Tax/TaxUpdate?APIKEY=${APIKEY}`, {
-            mvTax: payload,
-          })
-          .then((res) => {
-            res.data.ResponseStatus.ErrorCode == 0
-              ? (resolve(res),
-                commit("showToast", {
-                  type: "success",
-                  payload: "Tax Added",
-                }))
-              : (reject(res),
-                commit("showToast", {
-                  type: "error",
-                  payload: res.data.ResponseStatus.Message,
-                }));
-          })
-          .catch((err) => {
-            commit("showToast", {
-              type: "error",
-              payload: "An error occured",
-            });
-            reject(err);
-          });
+    insertInventoryLocation({ dispatch }, payload) {
+      dispatch("insert", {
+        url: "InventoryLocation/InventoryLocationUpdate",
+        payload: { mvInventoryLocation: payload },
+        callback: "Inventory Location Added",
       });
     },
-    insertDiscount({ commit }, payload) {
-      new Promise((resolve, reject) => {
-        axios
-          .post(`Discount/DiscountUpdate?APIKEY=${APIKEY}`, {
-            mvDiscount: payload,
-          })
-          .then((res) => {
-            res.data.ResponseStatus.ErrorCode == 0
-              ? (resolve(res),
-                commit("showToast", {
-                  type: "success",
-                  payload: "Discount Added",
-                }))
-              : (reject(res),
-                commit("showToast", {
-                  type: "error",
-                  payload: res.data.ResponseStatus.Message,
-                }));
-          })
-          .catch((err) => {
-            commit("showToast", {
-              type: "error",
-              payload: "An error occured",
-            });
-            reject(err);
-          });
+    insertTax({ dispatch }, payload) {
+      dispatch("insert", {
+        url: "Tax/TaxUpdate",
+        payload: { mvTax: payload },
+        callback: "Tax Added",
+      });
+    },
+    insertDiscount({ dispatch }, payload) {
+      dispatch("insert", {
+        url: "Discount/DiscountUpdate",
+        payload: { mvDiscount: payload },
+        callback: "Discount Added",
       });
     },
   },
