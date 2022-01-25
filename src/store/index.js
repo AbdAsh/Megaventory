@@ -56,6 +56,34 @@ export default createStore({
           });
       });
     },
+    insertSupplierClient({ commit }, payload) {
+      new Promise((resolve, reject) => {
+        axios
+          .post(`SupplierClient/SupplierClientUpdate?APIKEY=${APIKEY}`, {
+            mvSupplierClient: payload,
+          })
+          .then((res) => {
+            res.data.ResponseStatus.ErrorCode == 0
+              ? (resolve(res),
+                commit("showToast", {
+                  type: "success",
+                  payload: "Supplier Client Added",
+                }))
+              : (reject(res),
+                commit("showToast", {
+                  type: "error",
+                  payload: res.data.ResponseStatus.Message,
+                }));
+          })
+          .catch((err) => {
+            commit("showToast", {
+              type: "error",
+              payload: "An error occured",
+            });
+            reject(err);
+          });
+      });
+    },
   },
   modules: {},
 });
