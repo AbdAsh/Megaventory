@@ -1,18 +1,21 @@
 <template>
   <div class="home">
     <!-- <InsertProduct /> -->
-    <InsertClient />
+    <!-- <InsertClient /> -->
+    <InsertInventoryLocation />
   </div>
 </template>
 
 <script>
 // import InsertProduct from "@/components/InsertProduct.vue";
-import InsertClient from "@/components/InsertClient.vue";
+// import InsertClient from "@/components/InsertClient.vue";
+import InsertInventoryLocation from "@/components/InsertInventoryLocation.vue";
 export default {
   name: "Home",
   components: {
     // InsertProduct,
-    InsertClient,
+    // InsertClient,
+    InsertInventoryLocation,
   },
 };
 </script>

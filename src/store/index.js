@@ -84,6 +84,34 @@ export default createStore({
           });
       });
     },
+    insertInventoryLocation({ commit }, payload) {
+      new Promise((resolve, reject) => {
+        axios
+          .post(`InventoryLocation/InventoryLocationUpdate?APIKEY=${APIKEY}`, {
+            mvInventoryLocation: payload,
+          })
+          .then((res) => {
+            res.data.ResponseStatus.ErrorCode == 0
+              ? (resolve(res),
+                commit("showToast", {
+                  type: "success",
+                  payload: "Inventory Location Added",
+                }))
+              : (reject(res),
+                commit("showToast", {
+                  type: "error",
+                  payload: res.data.ResponseStatus.Message,
+                }));
+          })
+          .catch((err) => {
+            commit("showToast", {
+              type: "error",
+              payload: "An error occured",
+            });
+            reject(err);
+          });
+      });
+    },
   },
   modules: {},
 });
