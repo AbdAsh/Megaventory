@@ -112,6 +112,34 @@ export default createStore({
           });
       });
     },
+    insertTax({ commit }, payload) {
+      new Promise((resolve, reject) => {
+        axios
+          .post(`Tax/TaxUpdate?APIKEY=${APIKEY}`, {
+            mvTax: payload,
+          })
+          .then((res) => {
+            res.data.ResponseStatus.ErrorCode == 0
+              ? (resolve(res),
+                commit("showToast", {
+                  type: "success",
+                  payload: "Tax Added",
+                }))
+              : (reject(res),
+                commit("showToast", {
+                  type: "error",
+                  payload: res.data.ResponseStatus.Message,
+                }));
+          })
+          .catch((err) => {
+            commit("showToast", {
+              type: "error",
+              payload: "An error occured",
+            });
+            reject(err);
+          });
+      });
+    },
   },
   modules: {},
 });
