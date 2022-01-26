@@ -44,11 +44,14 @@ export default createStore({
                   type: "error",
                   payload: res.data.ResponseStatus.Message,
                 }));
+            this.$router.go(0);
           })
           .catch((err) => {
             commit("showToast", {
               type: "error",
-              payload: "An error occured",
+              payload: err.data.ResponseStatus.Message
+                ? err.data.ResponseStatus.Message
+                : "An error occured",
             });
             reject(err);
           });
