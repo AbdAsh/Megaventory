@@ -1,17 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Clients from "../views/Clients.vue";
 import Discounts from "../views/Discounts.vue";
-import Home from "../views/Home.vue";
 import InventoryLocations from "../views/InventoryLocations.vue";
 import Products from "../views/Products.vue";
 import Taxes from "../views/Taxes.vue";
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
   {
     path: "/products",
     name: "Products",
@@ -36,6 +30,11 @@ const routes = [
     path: "/taxes",
     name: "Taxes",
     component: Taxes,
+  },
+  // catchall
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/products",
   },
 ];
 
