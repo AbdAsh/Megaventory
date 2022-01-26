@@ -10,7 +10,7 @@
         <input class="input" type="text" v-model="tax.TaxDescription" />
         &nbsp;
         <label class="label has-text-left">Value</label>
-        <input class="input" type="number" v-model="tax.TaxValue" />
+        <input class="input" type="number" step="any" v-model="tax.TaxValue" />
       </div>
       <p v-if="error" class="help is-danger">{{ error }}</p>
       <div class="control">

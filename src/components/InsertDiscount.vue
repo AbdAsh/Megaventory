@@ -14,7 +14,12 @@
         />
         &nbsp;
         <label class="label has-text-left">Value</label>
-        <input class="input" type="number" v-model="discount.DiscountValue" />
+        <input
+          class="input"
+          type="number"
+          step="any"
+          v-model="discount.DiscountValue"
+        />
       </div>
       <p v-if="error" class="help is-danger">{{ error }}</p>
       <div class="control">

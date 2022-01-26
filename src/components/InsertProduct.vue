@@ -13,6 +13,7 @@
         <input
           class="input"
           type="number"
+          step="any"
           v-model="product.ProductSellingPrice"
         />
         &nbsp;
@@ -20,6 +21,7 @@
         <input
           class="input"
           type="number"
+          step="any"
           v-model="product.ProductPurchasePrice"
         />
       </div>
