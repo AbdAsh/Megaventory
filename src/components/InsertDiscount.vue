@@ -63,11 +63,10 @@ export default {
         .dispatch("insertDiscount", this.discount)
         .then(() => {
           this.loading = false;
-          this.product = {
-            ProductSKU: "",
-            ProductDescription: "",
-            ProductSellingPrice: "",
-            ProductPurchasePrice: "",
+          this.discount = {
+            DiscountName: "",
+            DiscountDescription: "",
+            DiscountValue: "",
           };
         })
         .catch((err) => {

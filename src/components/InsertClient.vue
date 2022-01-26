@@ -67,11 +67,11 @@ export default {
         .dispatch("insertSupplierClient", this.client)
         .then(() => {
           this.loading = false;
-          this.product = {
-            ProductSKU: "",
-            ProductDescription: "",
-            ProductSellingPrice: "",
-            ProductPurchasePrice: "",
+          this.client = {
+            SupplierClientName: "",
+            SupplierClientEmail: "",
+            SupplierClientShippingAddress1: "",
+            SupplierClientPhone1: "",
           };
         })
         .catch((err) => {

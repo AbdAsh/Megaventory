@@ -66,11 +66,10 @@ export default {
         .dispatch("insertInventoryLocation", this.inventory)
         .then(() => {
           this.loading = false;
-          this.product = {
-            ProductSKU: "",
-            ProductDescription: "",
-            ProductSellingPrice: "",
-            ProductPurchasePrice: "",
+          this.inventory = {
+            InventoryLocationAbbreviation: "",
+            InventoryLocationName: "",
+            InventoryLocationAddress: "",
           };
         })
         .catch((err) => {

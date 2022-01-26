@@ -50,11 +50,10 @@ export default {
         .dispatch("insertTax", this.tax)
         .then(() => {
           this.loading = false;
-          this.product = {
-            ProductSKU: "",
-            ProductDescription: "",
-            ProductSellingPrice: "",
-            ProductPurchasePrice: "",
+          this.tax = {
+            TaxName: "",
+            TaxDescription: "",
+            TaxValue: "",
           };
         })
         .catch((err) => {
